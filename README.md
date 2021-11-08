@@ -19,7 +19,7 @@ Example: `gettr.User('arthurfontaine')`
 
 #### Methods
 
-##### User.`infos`
+##### User.`infos()`
 Example: `gettr.User('arthurfontaine').infos()`
 
 Returns a promise that resolves to an object containing the user's infos.
@@ -30,46 +30,53 @@ Returns a promise that resolves to an object containing the user's infos.
  */
 ```
 
-##### User.`posts`
+##### User.`posts(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').posts()`
 
 Returns a promise that resolves to an array containing the user's posts.
 
 ```js
 /**
+ * @param {number} [max=20]
+ * @param {number} [offset=0]
  * @returns {Promise<{posts: Post[], body: APIUserPostsBody}>}
  */
 ```
 
-##### User.`followers`
+##### User.`followers(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').followers()`
 
 Returns a promise that resolves to an array containing the user's followers.
 
 ```js
 /**
+ * @param {number} [max=20]
+ * @param {number} [offset=0]
  * @returns {Promise<{followers: User[], body: APIFollowersBody}>}
  */
 ```
 
-##### User.`followings`
+##### User.`followings(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').followings()`
 
 Returns a promise that resolves to an array containing the user's followings.
 
 ```js
 /**
+ * @param {number} [max=20]
+ * @param {number} [offset=0]
  * @returns {Promise<{followings: User[], body: APIFollowingsBody}>}
  */
 ```
 
 ##### User.`isMutualWith`
-Example: `gettr.User('arthurfontaine').isMutualWith('edwardsnowden')`
+Example: `gettr.User('arthurfontaine').isMutualWith(new gettr.User('edwardsnowden'))`
 
 Returns a promise that resolves to a boolean indicating if the user is mutual with the given user.
 
 ```js
 /**
+ * @param {User} user
  * @returns {Promise<boolean>}
  */
 ```
