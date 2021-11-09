@@ -19,10 +19,6 @@ test('', async (t) => {
 
   const post = new Post('pgeb7m863c')
 
-  while (!post.dataFetched) {
-    await new Promise(resolve => setTimeout(resolve, 100))
-  }
-
-  const postDate = post.date
+  const postDate = await post.date()
   t.equal(postDate?.getTime(), new Date(1636393569664).getTime())
 });

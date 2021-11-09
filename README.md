@@ -19,7 +19,7 @@ Example: `gettr.User('arthurfontaine')`
 
 #### Methods
 
-##### User.`infos()`
+##### gettr.User.`infos()`
 Example: `gettr.User('arthurfontaine').infos()`
 
 Returns a promise that resolves to an object containing the user's infos.
@@ -30,7 +30,7 @@ Returns a promise that resolves to an object containing the user's infos.
  */
 ```
 
-##### User.`posts(max = 20, offset = 0)`
+##### gettr.User.`posts(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').posts()`
 
 Returns a promise that resolves to an array containing the user's posts.
@@ -39,11 +39,11 @@ Returns a promise that resolves to an array containing the user's posts.
 /**
  * @param {number} [max=20]
  * @param {number} [offset=0]
- * @returns {Promise<{posts: Post[], body: APIUserPostsBody}>}
+ * @returns {Promise<{posts: gettr.Post[], body: APIUserPostsBody}>}
  */
 ```
 
-##### User.`followers(max = 20, offset = 0)`
+##### gettr.User.`followers(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').followers()`
 
 Returns a promise that resolves to an array containing the user's followers.
@@ -52,11 +52,11 @@ Returns a promise that resolves to an array containing the user's followers.
 /**
  * @param {number} [max=20]
  * @param {number} [offset=0]
- * @returns {Promise<{followers: User[], body: APIFollowersBody}>}
+ * @returns {Promise<{followers: gettr.User[], body: APIFollowersBody}>}
  */
 ```
 
-##### User.`followings(max = 20, offset = 0)`
+##### gettr.User.`followings(max = 20, offset = 0)`
 Example: `gettr.User('arthurfontaine').followings()`
 
 Returns a promise that resolves to an array containing the user's followings.
@@ -65,25 +65,25 @@ Returns a promise that resolves to an array containing the user's followings.
 /**
  * @param {number} [max=20]
  * @param {number} [offset=0]
- * @returns {Promise<{followings: User[], body: APIFollowingsBody}>}
+ * @returns {Promise<{followings: gettr.User[], body: APIFollowingsBody}>}
  */
 ```
 
-##### User.`isMutualWith`
+##### gettr.User.`isMutualWith(user: gettr.User)`
 Example: `gettr.User('arthurfontaine').isMutualWith(new gettr.User('edwardsnowden'))`
 
 Returns a promise that resolves to a boolean indicating if the user is mutual with the given user.
 
 ```js
 /**
- * @param {User} user
+ * @param {gettr.User} user
  * @returns {Promise<boolean>}
  */
 ```
 
 #### Properties
 
-##### User.`url`
+##### gettr.User.`url`
 Example: `gettr.User('arthurfontaine').url`
 
 ```js
@@ -92,45 +92,47 @@ Example: `gettr.User('arthurfontaine').url`
  */
 ```
 
-### gettr.`Post(id: string, content: string, author: User, date: Date)`
+### gettr.`Post(id: string, content: string, author: gettr.User, date: Date)`
 Example: `gettr.Post('paz2a0ksnx', 'Hello world!', gettr.User('arthurfontaine'), new Date(1636405960355))`
+
+#### Methods
+
+##### gettr.Post.`content()`
+Example: `gettr.Post('paz2a0ksnx').content()`
+
+Returns a promise that resolves to the post's content.
+
+```js
+/**
+ * @returns {Promise<?string>}
+ */
+```
+
+##### gettr.Post.`author()`
+Example: `gettr.Post('paz2a0ksnx').author()`
+
+Returns a promise that resolves to the post's author.
+
+```js
+/**
+ * @returns {Promise<?gettr.User>}
+ */
+```
+
+##### gettr.Post.`date()`
+Example: `gettr.Post('paz2a0ksnx').date()`
+
+Returns a promise that resolves to the post's date.
+
+```js
+/**
+ * @returns {Promise<?Date>}
+ */
+```
 
 #### Properties
 
-##### Post.`content`
-Example: `gettr.Post('paz2a0ksnx').content`
-
-Returns the post's content.
-
-```js
-/**
- * @returns {?string}
- */
-```
-
-##### Post.`author`
-Example: `gettr.Post('paz2a0ksnx').author`
-
-Returns the post's author.
-
-```js
-/**
- * @returns {?User}
- */
-```
-
-##### Post.`date`
-Example: `gettr.Post('paz2a0ksnx').date`
-
-Returns the post's date.
-
-```js
-/**
- * @returns {?Date}
- */
-```
-
-##### Post.`url`
+##### gettr.Post.`url`
 Example: `gettr.Post('paz2a0ksnx').url`
 
 Returns the post's URL.

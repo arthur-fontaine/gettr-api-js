@@ -16,20 +16,28 @@ class Post {
         })();
     }
 
-    get dataFetched(): boolean {
-        return this.body !== undefined;
+    async content() {
+        while (!this.body) {
+            await new Promise(resolve => setTimeout(resolve, 1))
+        }
+
+        return this.body.result?.data?.txt
     }
 
-    get content() {
-        return this.body?.result?.data?.txt
+    async author() {
+        while (!this.body) {
+            await new Promise(resolve => setTimeout(resolve, 1))
+        }
+
+        return this.body.result?.data?.uid ? new User(this.body.result.data.uid) : undefined
     }
 
-    get author() {
-        return this.body?.result?.data?.uid ? new User(this.body.result.data.uid) : undefined
-    }
+    async date() {
+        while (!this.body) {
+            await new Promise(resolve => setTimeout(resolve, 1))
+        }
 
-    get date() {
-        return this.body?.result?.data?.cdate ? new Date(this.body.result.data.cdate) : undefined
+        return this.body.result?.data?.cdate ? new Date(this.body.result.data.cdate) : undefined
     }
 
     get url(): string {
